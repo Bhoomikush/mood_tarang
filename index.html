@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mood Tarang 🎵 — Bollywood Mood Player</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500;700;800&family=Mukta:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="mood-focused">
+
+  <!-- floating particle layer, populated by JS -->
+  <div id="particle-layer" class="particle-layer" aria-hidden="true"></div>
+
+  <div class="app">
+
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-mark">॰❁॰</span>
+        <h1>Mood Tarang</h1>
+        <span class="brand-sub">तरंग · a wave for every mood</span>
+      </div>
+      <p class="tagline">Pick a mood. The screen, the beat, the whole room shifts with you.</p>
+    </header>
+
+    <!-- MOOD SELECTOR -->
+    <nav class="mood-selector" role="tablist" aria-label="Choose your mood">
+      <button class="mood-btn" data-mood="happy" role="tab" aria-selected="false">
+        <span class="mood-emoji">😄</span>
+        <span class="mood-label">Happy</span>
+        <span class="mood-hindi">खुश</span>
+      </button>
+      <button class="mood-btn" data-mood="sad" role="tab" aria-selected="false">
+        <span class="mood-emoji">😢</span>
+        <span class="mood-label">Sad</span>
+        <span class="mood-hindi">उदास</span>
+      </button>
+      <button class="mood-btn is-active" data-mood="focused" role="tab" aria-selected="true">
+        <span class="mood-emoji">📚</span>
+        <span class="mood-label">Focused</span>
+        <span class="mood-hindi">एकाग्र</span>
+      </button>
+      <button class="mood-btn" data-mood="energetic" role="tab" aria-selected="false">
+        <span class="mood-emoji">⚡</span>
+        <span class="mood-label">Energetic</span>
+        <span class="mood-hindi">जोश</span>
+      </button>
+    </nav>
+
+    <main class="player-stage">
+
+      <!-- NOW PLAYING CARD -->
+      <section class="now-playing" aria-live="polite">
+        <div class="disc-wrap">
+          <div class="disc" id="disc">
+            <div class="disc-hole"></div>
+          </div>
+          <div class="disc-glow"></div>
+        </div>
+
+        <div class="track-info">
+          <p class="eyebrow" id="mood-eyebrow">Focused mode</p>
+          <h2 id="track-title">Select a track to begin</h2>
+          <p id="track-artist" class="track-artist">—</p>
+
+          <audio id="audio" preload="none"></audio>
+
+          <div class="controls">
+            <button id="prev-btn" class="ctrl-btn" aria-label="Previous track">⏮</button>
+            <button id="play-btn" class="ctrl-btn ctrl-btn--main" aria-label="Play or pause">▶</button>
+            <button id="next-btn" class="ctrl-btn" aria-label="Next track">⏭</button>
+          </div>
+
+          <div class="seek-row">
+            <span id="time-current">0:00</span>
+            <input type="range" id="seek" value="0" min="0" max="100" step="0.1" aria-label="Seek">
+            <span id="time-duration">0:00</span>
+          </div>
+
+          <div class="volume-row">
+            <span aria-hidden="true">🔈</span>
+            <input type="range" id="volume" value="70" min="0" max="100" aria-label="Volume">
+          </div>
+
+          <p class="local-file-hint" id="local-hint"></p>
+        </div>
+      </section>
+
+      <!-- PLAYLIST -->
+      <section class="playlist-panel">
+        <h3 class="playlist-title">Playlist <span id="playlist-mood-label">· Focused</span></h3>
+        <ul class="playlist" id="playlist"></ul>
+      </section>
+
+    </main>
+
+    <footer class="app-footer">
+      <p>Drop your own MP3s into <code>/songs/&lt;mood&gt;/</code> and update the file names in <code>script.js</code> — or tap “Search on YouTube” to listen there instead.</p>
+    </footer>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
